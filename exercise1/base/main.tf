@@ -1,6 +1,6 @@
 # Cretate VPC
 resource "aws_vpc" "the-vpc" {
-  cidr_block = var.vpc_cidr
+  cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   tags = {
     Name = var.vpc_name
@@ -9,8 +9,8 @@ resource "aws_vpc" "the-vpc" {
 
 #Create private subnets
 resource "aws_subnet" "private-subnet-1" {
-  vpc_id     = aws_vpc.the-vpc.id
-  cidr_block = var.private_subnet_1
+  vpc_id            = aws_vpc.the-vpc.id
+  cidr_block        = var.private_subnet_1
   availability_zone = "eu-central-1a"
   tags = {
     Name = "private-subnet-1"
@@ -18,8 +18,8 @@ resource "aws_subnet" "private-subnet-1" {
 }
 
 resource "aws_subnet" "private-subnet-2" {
-  vpc_id     = aws_vpc.the-vpc.id
-  cidr_block = var.private_subnet_2
+  vpc_id            = aws_vpc.the-vpc.id
+  cidr_block        = var.private_subnet_2
   availability_zone = "eu-central-1b"
   tags = {
     Name = "private-subnet-2"
@@ -28,8 +28,8 @@ resource "aws_subnet" "private-subnet-2" {
 
 #Create puplic subnets
 resource "aws_subnet" "public-subnet-1" {
-  vpc_id     = aws_vpc.the-vpc.id
-  cidr_block = var.public_subnet_1
+  vpc_id            = aws_vpc.the-vpc.id
+  cidr_block        = var.public_subnet_1
   availability_zone = "eu-central-1a"
   tags = {
     Name = "public-subnet-1"
@@ -37,8 +37,8 @@ resource "aws_subnet" "public-subnet-1" {
 }
 
 resource "aws_subnet" "public-subnet-2" {
-  vpc_id     = aws_vpc.the-vpc.id
-  cidr_block = var.public_subnet_2
+  vpc_id            = aws_vpc.the-vpc.id
+  cidr_block        = var.public_subnet_2
   availability_zone = "eu-central-1b"
   tags = {
     Name = "public-subnet-2"
@@ -50,7 +50,7 @@ resource "aws_internet_gateway" "the-igw" {
   vpc_id = aws_vpc.the-vpc.id
   tags = {
     Name = "the-IGW"
-    }
+  }
 }
 
 #Crate public route table
@@ -65,7 +65,7 @@ resource "aws_route_table" "public-route-table" {
 #Public route table --> IGW
 resource "aws_route" "public-route" {
   route_table_id         = aws_route_table.public-route-table.id
-  destination_cidr_block = "0.0.0.0/0"  # Az internetre irányított forgalom
+  destination_cidr_block = "0.0.0.0/0" # Az internetre irányított forgalom
   gateway_id             = aws_internet_gateway.the-igw.id
 }
 
@@ -118,10 +118,10 @@ resource "aws_route" "private-subnet-route" {
 }
 
 resource "aws_vpc_endpoint" "s3" {
-  vpc_id       = aws_vpc.the-vpc.id
-  service_name = "com.amazonaws.${var.region}.s3"
+  vpc_id            = aws_vpc.the-vpc.id
+  service_name      = "com.amazonaws.${var.region}.s3"
   vpc_endpoint_type = "Gateway"
-  route_table_ids = [aws_route_table.private-route-table.id]
+  route_table_ids   = [aws_route_table.private-route-table.id]
 
   tags = {
     Name = "s3-${var.vpc_name}"
