@@ -1,14 +1,3 @@
-terraform {
-  required_version = "~> 1.5.0"
-
-  required_providers {
-    aws = {
-      version = "5.17.0"
-      source  = "hashicorp/aws"
-    }
-  }
-}
-
 module "base" {
   source           = "./base"
   region           = "eu-central-1"
