@@ -20,9 +20,12 @@ No modules.
 | Name | Type |
 |------|------|
 | [aws_eip.nat-gw-eip](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/eip) | resource |
+| [aws_eip.nat-gw-eip-2](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/eip) | resource |
 | [aws_internet_gateway.the-igw](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/internet_gateway) | resource |
 | [aws_nat_gateway.nat-gw](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/nat_gateway) | resource |
+| [aws_nat_gateway.nat-gw-2](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/nat_gateway) | resource |
 | [aws_route.private-subnet-route](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/route) | resource |
+| [aws_route.private-subnet-route-2](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/route) | resource |
 | [aws_route.public-route](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/route) | resource |
 | [aws_route_table.private-route-table](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/route_table) | resource |
 | [aws_route_table.public-route-table](https://registry.terraform.io/providers/hashicorp/aws/5.17.0/docs/resources/route_table) | resource |
