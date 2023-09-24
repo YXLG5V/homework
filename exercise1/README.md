@@ -12,3 +12,30 @@ module "base" {
   private_subnet_2 = "10.0.4.0/24"  
 }
 ```
+## Requirements
+
+No requirements.
+
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_base"></a> [base](#module\_base) | ./base | n/a |
+
+## Resources
+
+No resources.
+
+## Inputs
+
+No inputs.
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
