@@ -101,7 +101,7 @@ resource "aws_eip" "nat-gw-eip" {
 # NAT gateway with eip in private subnet 1
 resource "aws_nat_gateway" "nat-gw" {
   allocation_id = aws_eip.nat-gw-eip.id
-  subnet_id     = aws_subnet.private-subnet-1.id
+  subnet_id     = aws_subnet.public-subnet-1.id
   depends_on    = [aws_internet_gateway.the-igw]
 }
 
@@ -112,7 +112,7 @@ resource "aws_eip" "nat-gw-eip-2" {
 
 resource "aws_nat_gateway" "nat-gw-2" {
   allocation_id = aws_eip.nat-gw-eip-2.id
-  subnet_id     = aws_subnet.private-subnet-2.id
+  subnet_id     = aws_subnet.public-subnet-2.id
   depends_on    = [aws_internet_gateway.the-igw]
 }
 
