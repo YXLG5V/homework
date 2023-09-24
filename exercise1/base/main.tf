@@ -105,6 +105,17 @@ resource "aws_nat_gateway" "nat-gw" {
   depends_on    = [aws_internet_gateway.the-igw]
 }
 
+
+resource "aws_eip" "nat-gw-eip-2" {
+  domain = "vpc"
+}
+
+resource "aws_nat_gateway" "nat-gw-2" {
+  allocation_id = aws_eip.nat-gw-eip-2.id
+  subnet_id     = aws_subnet.private-subnet-2.id
+  depends_on    = [aws_internet_gateway.the-igw]
+}
+
 # Private route table --> demo VPC
 resource "aws_route_table" "private-route-table" {
   vpc_id = aws_vpc.the-vpc.id
@@ -126,6 +137,12 @@ resource "aws_route" "private-subnet-route" {
   route_table_id         = aws_route_table.private-route-table.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = aws_nat_gateway.nat-gw.id
+}
+
+resource "aws_route" "private-subnet-route-2" {
+  route_table_id         = aws_route_table.private-route-table.id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = aws_nat_gateway.nat-gw-2.id
 }
 
 resource "aws_vpc_endpoint" "s3" {
