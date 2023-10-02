@@ -1,6 +1,6 @@
 module "s3_bucket" {
   source      = "./s3_bucket"
-  bucket_name = "test-hw_backup_bucket"
+  bucket_name = "test_hw_backup_bucket"
   expiration  = 180
     providers = {
     aws = aws.bucket_account
