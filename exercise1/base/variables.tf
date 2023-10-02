@@ -10,18 +10,18 @@ variable "vpc_name" {
   type = string
 }
 
-variable "public_subnet_1" {
-  type = string
+
+variable "public_subnets" {
+  description = "public_subnets"
+  type        = list(string)
 }
 
-variable "public_subnet_2" {
-  type = string
+variable "private_subnets" {
+  description = "private_subnets"
+  type        = list(string)
 }
 
-variable "private_subnet_1" {
-  type = string
-}
-
-variable "private_subnet_2" {
-  type = string
+variable "availability_zones" {
+  description = "Availability zones"
+  type        = list(string)
 }
