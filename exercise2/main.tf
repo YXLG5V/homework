@@ -2,7 +2,7 @@ module "s3_bucket" {
   source      = "./s3_bucket"
   bucket_name = "test_hw_backup_bucket"
   expiration  = 180
-    providers = {
+  providers = {
     aws = aws.bucket_account
   }
 }
@@ -67,7 +67,7 @@ resource "aws_iam_policy_attachment" "upload_policy_attachment" {
 #Create bucket policy (allow upload for the backup_uploader role)
 resource "aws_s3_bucket_policy" "backup_bucket_policy" {
   provider = aws.bucket_account
-  bucket = module.s3_bucket.s3_bucket_id
+  bucket   = module.s3_bucket.s3_bucket_id
 
   policy = jsonencode({
     Version = "2012-10-17",
