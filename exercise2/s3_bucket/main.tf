@@ -44,8 +44,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle_rule" {
     id = "expire_old_backups"
 
     transition {
-      days          = 7
-      storage_class = "STANDARD_IA"
+      storage_class = "INTELLIGENT_TIERING"
     }
 
     expiration {
